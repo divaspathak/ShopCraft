@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: ShopCraft
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  datasource: 
+    url: jdbc:postgresql://localhost:5432/ShopCraft
+    username: divaspathak
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  
