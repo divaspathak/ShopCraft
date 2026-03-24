@@ -13,13 +13,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductRequestDto {
-    
-    Long id; 
-    String name; 
-    String description; 
-    Category category; 
-    BigDecimal rating; 
-    LocalDateTime created_at; 
-    LocalDateTime updated_at; 
-    LocalDateTime deleted_at; 
+    String title;
+    String description;
+    String category;
+    BigDecimal rating;
 }
