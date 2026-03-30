@@ -23,6 +23,7 @@ public class CategoryService implements ICategoryService {
     }
 
     public Category createCategory(String name){
-        return categoryRepository.save(new Category(name)); 
+        Category category = Category.builder().name(name).build(); 
+        return categoryRepository.save(category); 
     }
 }
