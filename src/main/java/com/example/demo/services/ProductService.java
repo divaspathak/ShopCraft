@@ -29,4 +29,9 @@ public class ProductService implements IProductService {
         Product product = ProductMapper.convertToProduct(productRequestDto, this.categoryRepository); 
         return productRepository.save(product); 
     }
+
+    public Product getProductById(Long id){
+        return productRepository.findById(id)
+        .orElseThrow(() -> new RuntimeException("Product not found")); 
+    }
 }

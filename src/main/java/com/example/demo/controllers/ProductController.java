@@ -3,9 +3,11 @@ package com.example.demo.controllers;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dtos.ProductRequestDto;
@@ -20,12 +22,19 @@ public class ProductController {
     public ProductController(IProductService productService){
         this.productService = productService; 
     }
+    
     @GetMapping()
     List<Product> getAllProducts(){
         return productService.getAllProducts(); 
     }
+
     @PostMapping("/add")
     Product createProduct(@RequestBody ProductRequestDto productRequestDto){
         return productService.createProduct(productRequestDto); 
+    }
+
+    @GetMapping(params = "id")
+    Product getProductById(@RequestParam Long id){
+        return productService.getProductById(id); 
     }
 }
