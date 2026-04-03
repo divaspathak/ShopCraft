@@ -1,6 +1,7 @@
 package com.example.demo.schema;
 import java.math.BigDecimal;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -26,7 +27,7 @@ public class Product extends BaseEntity{
     String description; 
 
     @JoinColumn(name = "category_id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     Category category; 
 
     String image; 

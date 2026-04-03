@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.dtos.ProductRequestDto;
+import com.example.demo.dtos.ProductResponseDto;
 import com.example.demo.mappers.ProductMapper;
 import com.example.demo.repositories.CategoryRepository;
 import com.example.demo.repositories.ProductRepository;
@@ -20,18 +21,39 @@ public class ProductService implements IProductService {
         this.categoryRepository = categoryRepository;
     }
 
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
+    public List<ProductResponseDto> getAllProducts() {
+        List<Product> productList = productRepository.getAllProducts();
+
+        return productList.stream()
+                .map(product -> ProductResponseDto.builder().id(product.getId())
+                        .title(product.getTitle())
+                        .description(product.getDescription())
+                        .category(product.getCategory().getName())
+                        .rating(product.getRating())
+                        .createdAt(product.getCreatedAt())
+                        .updatedAt(product.getUpdatedAt()).deletedAt(product.getDeletedAt())
+                        .build())
+
+                .toList();
     }
 
-    public Product createProduct(ProductRequestDto productRequestDto){
+    public Product createProduct(ProductRequestDto productRequestDto) {
 
-        Product product = ProductMapper.convertToProduct(productRequestDto, this.categoryRepository); 
-        return productRepository.save(product); 
+        Product product = ProductMapper.convertToProduct(productRequestDto, this.categoryRepository);
+        return productRepository.save(product);
     }
 
-    public Product getProductById(Long id){
-        return productRepository.findById(id)
-        .orElseThrow(() -> new RuntimeException("Product not found")); 
+    public ProductResponseDto getProductById(Long id) {
+        Product product = productRepository.getProductById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found"));
+
+        return ProductResponseDto.builder().id(product.getId())
+                .title(product.getTitle())
+                .description((product.getDescription()))
+                .category(product.getCategory().getName())
+                .rating(product.getRating())
+                .createdAt(product.getCreatedAt())
+                .updatedAt(product.getUpdatedAt())
+                .deletedAt(product.getDeletedAt()).build();
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dtos.ProductRequestDto;
+import com.example.demo.dtos.ProductResponseDto;
 import com.example.demo.schema.Product;
 import com.example.demo.services.IProductService;
 
@@ -24,7 +25,7 @@ public class ProductController {
     }
     
     @GetMapping()
-    List<Product> getAllProducts(){
+    List<ProductResponseDto> getAllProducts(){
         return productService.getAllProducts(); 
     }
 
@@ -34,7 +35,7 @@ public class ProductController {
     }
 
     @GetMapping(params = "id")
-    Product getProductById(@RequestParam Long id){
+    ProductResponseDto getProductById(@RequestParam Long id){
         return productService.getProductById(id); 
     }
 }
