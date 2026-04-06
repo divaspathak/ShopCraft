@@ -1,9 +1,9 @@
-Create Table order_reviews(
+Create Table reviews(
     id BIGINT PRIMARY KEY, 
-    comments VARCHAR(255), 
+    comment VARCHAR(255), 
     rating INTEGER, 
-    order_id BIGINT, 
-    product_id BIGINT, 
+    order_id BIGINT NOT NULL, 
+    product_id BIGINT NOT NULL, 
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     deleted_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
