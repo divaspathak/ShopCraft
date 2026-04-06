@@ -1,5 +1,4 @@
 package com.example.demo.schema;
-import java.math.BigDecimal;
 
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
@@ -7,38 +6,31 @@ import org.hibernate.annotations.SQLRestriction;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank; 
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor; 
+import lombok.NoArgsConstructor;
 
-@Entity
-@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "products")
+@Entity
+@Table(name = "order_products")
+@Builder
 @SQLDelete(sql = "UPDATE order_products SET deleted_at = CURRENT_TIMESTAMP WHERE id = ?")
 @SQLRestriction("deleted_at IS NULL")
-public class Product extends BaseEntity{
+public class OrderProducts extends BaseEntity{
 
-    @NotBlank(message = "Title cannot be blank")  
-    @Size(min = 3)
-    String title; 
-
-    String description; 
-
-    @JoinColumn(name = "category_id")
     @ManyToOne(fetch = FetchType.LAZY)
-    Category category; 
+    @JoinColumn(name = "order_id", nullable = false)
+    Order order; 
 
-    String image; 
-
-    BigDecimal rating; 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = false)
+    Product product; 
 
     Long quantity; 
 }
