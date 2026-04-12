@@ -1,6 +1,9 @@
 package com.example.demo.dtos;
 
+import java.time.LocalDateTime;
 import java.util.List;
+
+import com.example.demo.enums.OrderStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,6 +15,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class OrderResponseDto {
-    Long id; 
-    List<OrderItemsDto> orderItems; 
+    Long id;
+    OrderStatus status;
+    List<OrderItemsResponseDto> orderItems;
+    LocalDateTime createdAt;
+    LocalDateTime upDatedAt;
 }

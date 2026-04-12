@@ -8,6 +8,6 @@ Create Table products(
     category_id BIGINT,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
     updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, 
-    deleted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+    deleted_at TIMESTAMP NULL DEFAULT NULL, 
     FOREIGN KEY (category_id) REFERENCES categories(id)
 ); 

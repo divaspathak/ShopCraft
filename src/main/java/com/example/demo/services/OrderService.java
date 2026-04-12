@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.dtos.OrderItemsDto;
+import com.example.demo.dtos.OrderItemsResponseDto;
 import com.example.demo.dtos.OrderRequestDto;
 import com.example.demo.dtos.OrderResponseDto;
 import com.example.demo.repositories.OrderRepository;

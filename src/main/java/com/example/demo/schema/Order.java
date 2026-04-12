@@ -3,7 +3,7 @@ package com.example.demo.schema;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
-import com.example.demo.enums.OrderProduct;
+import com.example.demo.enums.OrderStatus;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -21,5 +21,5 @@ import lombok.NoArgsConstructor;
 @SQLRestriction("deleted_at IS NULL")
 public class Order extends BaseEntity{
 
-    OrderProduct status;  
+    OrderStatus status;  
 }
