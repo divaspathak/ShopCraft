@@ -19,5 +19,5 @@ public class OrderResponseDto {
     OrderStatus status;
     List<OrderItemsResponseDto> orderItems;
     LocalDateTime createdAt;
-    LocalDateTime upDatedAt;
+    LocalDateTime updatedAt;
 }

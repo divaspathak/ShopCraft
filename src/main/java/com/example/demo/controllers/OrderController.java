@@ -40,19 +40,19 @@ public class OrderController {
         throw new UnsupportedOperationException("Not implemented");
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<ApiResponse<Void>> deleteOrder(@PathVariable Long id) {
-        orderService.deleteOrder(id);
+    // @DeleteMapping("/{id}")
+    // public ResponseEntity<ApiResponse<Void>> deleteOrder(@PathVariable Long id) {
+    //     orderService.deleteOrder(id);
 
-        return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(null, "Order deleted successfully"));
-    }
+    //     return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(null, "Order deleted successfully"));
+    // }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<OrderResponseDto>> getOrderById(@PathVariable Long id) {
-        OrderResponseDto order = orderService.getOrderById(id);
+    // @GetMapping("/{id}")
+    // public ResponseEntity<ApiResponse<OrderResponseDto>> getOrderById(@PathVariable Long id) {
+    //     OrderResponseDto order = orderService.getOrderById(id);
 
-        return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(order, "Order fetched successfully"));
-    }
+    //     return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success(order, "Order fetched successfully"));
+    // }
 
     @GetMapping("/user/{userId}")
     public List<Order> getOrdersByUserId(@PathVariable Long userId) {

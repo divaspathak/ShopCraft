@@ -41,4 +41,6 @@ public class Product extends BaseEntity{
     BigDecimal rating; 
 
     Long quantity; 
+
+    BigDecimal price; 
 }

@@ -1,7 +1,6 @@
 package com.example.demo.dtos;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,11 +9,9 @@ import lombok.NoArgsConstructor;
 
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class OrderItemsResponseDto {
-
-    private Long id; 
+@NoArgsConstructor
+public class OrderItemsRequestDto {
 
     private Long productId;
 
@@ -29,9 +26,4 @@ public class OrderItemsResponseDto {
     private BigDecimal subTotal; 
 
     private BigDecimal rating; 
-
-    LocalDateTime createdAt; 
-
-    LocalDateTime updatedAt; 
-
 }
